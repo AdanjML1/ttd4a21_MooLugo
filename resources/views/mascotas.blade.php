@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('titulo','Crud mascotas')
 @section('contenido')
-    <h1>Hola perro</h1>
+    <h1></h1>
 
     <div id="apiMascota">
     	<h1>@{{mensaje}}</h1>
@@ -41,12 +41,12 @@
                       <td>@{{mas.genero}}</td>
                       <td>
                         <!--loa iconos estan en font awesome.com-->
-                        <button class="btn btn-sm" @click="editandoEspecie(especie.id_especie)">
+                        <button class="btn btn-sm" @click="editandoMascota(mas.id_mascota)">
                           <i class="fas fa-pen">
                             
                           </i>
                         </button>
-                        <button class="btn btn-sm" @click="eliminarEspecie(especie.id_especie)" >
+                        <button class="btn btn-sm" @click="eliminarMascota(mas.id_mascota)">
                           <i class="fas fa-trash">
                             
                           </i>
@@ -63,7 +63,8 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" >Agregando Mascota</h5>
+        <h5 class="modal-title" id="exampleModalLabel" v-if="agregando==true">Agregando Mascota</h5>
+        <h5 class="modal-title" id="exampleModalLabel" v-if="agregando==false">Editando Mascota</h5>
         
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -80,10 +81,31 @@
               <input type="text" class="form-control" placeholder="Escriba el peso" v-model="pesoA"><br>
 
               <select class="form-control" v-model="generoA"> 
-                <option disabled="">Elige una especie</option>
+                <option disabled="">Elige un genero</option>
                 <option value="M">M</option>
                 <option value="H">H</option>
               </select>
+              <br>
+              <select class="form-control" v-model="id_propietarioA"> 
+                <option disabled="">Elige un propietario</option>
+                <option value="1">adan</option>
+                <option value="2">richi</option>
+              </select>
+              <br>
+              <select class="form-control" v-model="id_especieA"> 
+                <option disabled="">Elige una especie</option>
+                <option value="1">Canino</option>
+                <option value="2">Felino</option>
+              </select>
+              <br>
+              <select class="form-control" v-model="id_razaA"> 
+                <option disabled="">Elige una raza</option>
+                <option value="1">Chowchow</option>
+                <option value="2">huski</option>
+              </select>
+              <br>
+
+
 
               
             </div>
@@ -93,7 +115,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" @click="guardarMascota">Guardar</button>
+        <button type="button" class="btn btn-primary" @click="guardarMascota" v-if="agregando==true">Guardar</button>
+        <button type="button" class="btn btn-warning" @click="actualizarMascota" v-if="agregando==false">Guardar cambios</button>
         
       </div>
     </div>

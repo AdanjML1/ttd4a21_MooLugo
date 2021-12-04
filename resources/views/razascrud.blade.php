@@ -7,7 +7,12 @@
 	</pre>-->
 	<div class="card card-danger card-outline">
               <div class="card-header">
-                <h5 class="m-0">Razas</h5>
+                <h5 class="m-0">Razas
+                  <button class="btn btn-primary" @click="mostrarModal()">  
+                    <i class="fas fa-plus">
+                      
+                    </i>
+                </h5>
               </div>
               <div class="card-body">
                 <table class="table table-bordered table-striped table-hover table-sm">
@@ -32,8 +37,37 @@
                 </table>
                 
               </div>
+            </div>  <!-- Modal para el formulario del registro de los moovimientos -->
+<div class="modal fade" id="modalRaza" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" v-if="agregando==true">Agregando Especie</h5>
+        <h5 class="modal-title" id="exampleModalLabel" v-if="agregando==false">Editando Especie</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-row">
+            <div class="col col-md-6">
+              <input type="text" class="form-control" placeholder="nombre de la raza" v-model="razaAgregar">
+              
             </div>
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" @click="guardarRaza">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div><!--fin de vue-->
+
 	
 
 @endsection

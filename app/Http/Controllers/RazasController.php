@@ -37,6 +37,12 @@ class RazasController extends Controller
     public function store(Request $request)
     {
         //
+        $raza= new Raza();
+
+        //en esta parte asignamos el valor que se enviara al modelo especies
+        $raza->raza=$request->get('raza');
+        //se envia con este metodo
+        $raza->save();
     }
 
     /**

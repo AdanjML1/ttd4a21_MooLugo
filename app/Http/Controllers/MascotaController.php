@@ -37,14 +37,17 @@ class MascotaController extends Controller
     public function store(Request $request)
     {
         //
-        $mascota=new Mascota();
+        $mascota= new Mascota();
 
-        //$mascota->id_mascota=$request->get('id_mascota');
+        //en esta parte asignamos el valor que se enviara al modelo especies
+        $mascota->id_especie=$request->get('id_especie');
+        $mascota->id_raza=$request->get('id_raza');
+        $mascota->id_propietario=$request->get('id_propietario');
         $mascota->nombre=$request->get('nombre');
         $mascota->edad=$request->get('edad');
         $mascota->peso=$request->get('peso');
         $mascota->genero=$request->get('genero');
-
+        //se envia con este metodo
         $mascota->save();
     }
 
@@ -81,6 +84,19 @@ class MascotaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $mascota=Mascota::find($id);
+
+        //en esta parte asignamos el valor que se enviara al modelo especies
+        $mascota->id_especie=$request->get('id_especie');
+        $mascota->id_raza=$request->get('id_raza');
+        $mascota->id_propietario=$request->get('id_propietario');
+        $mascota->nombre=$request->get('nombre');
+        $mascota->edad=$request->get('edad');
+        $mascota->peso=$request->get('peso');
+        $mascota->genero=$request->get('genero');
+        //se envia con este metodo
+        $mascota->update();
+
     }
 
     /**
@@ -92,5 +108,7 @@ class MascotaController extends Controller
     public function destroy($id)
     {
         //
+        $mascota=Mascota::find($id);
+        $mascota->delete();
     }
 }
