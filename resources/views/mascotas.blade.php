@@ -5,7 +5,8 @@
 
     <div id="apiMascota">
     	<h1>@{{mensaje}}</h1>
-         <div class="card card-danger card-outline">
+
+         <div class="card card-danger">
               <div class="card-header">
                 <h5 class="m-0">Mascotas 
 
@@ -13,7 +14,12 @@
                     <i class="fas fa-plus">
                       
                     </i>
-                  </button></h5>
+                  </button>
+                </h5><br>
+                 <div class="col-md-6">
+                    <input type="text" placeholder="Escriba el nombre de la mascota" class="form-control" v-model="buscar">                   
+                  </div>
+
 
               </div>
               <div class="card-body">
@@ -30,7 +36,7 @@
                     <th>Opciones</th>
                   </thead>
                   <tbody>
-                    <tr v-for="mas in mascotas">
+                    <tr v-for="mas in filtroMascotas">
                       <td>@{{mas.id_mascota}}</td>
                       <td>@{{mas.especie.especie}}</td>
                       <td>@{{mas.raza.raza}}</td>

@@ -19,6 +19,8 @@ new Vue({
 
 	data:{
 
+		buscar:'',
+
 		id_mascota:'',
 
 		agregando:true,
@@ -193,8 +195,15 @@ new Vue({
 
 
 	},
-
+	//fin de methods
 	computed:{
+		filtroMascotas:function(){
+			return this.mascotas.filter((mascota)=>{
+				return mascota.nombre.toLowerCase().match(this.buscar.toLowerCase().trim()) ||
+				       mascota.especie.especie.toLowerCase().match(this.buscar.toLowerCase().trim())
+			});
+		}
+
 
 	},
 
