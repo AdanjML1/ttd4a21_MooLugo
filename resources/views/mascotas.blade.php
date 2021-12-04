@@ -59,12 +59,12 @@
               </div>
             </div>
             <!-- Modal para el formulario del registro de los moovimientos -->
-<div class="modal fade" id="modalEspecies" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalMascota" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" v-if="agregando==true">Agregando Especie</h5>
-        <h5 class="modal-title" id="exampleModalLabel" v-if="agregando==false">Editando Especie</h5>
+        <h5 class="modal-title" id="exampleModalLabel" >Agregando Mascota</h5>
+        
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -73,7 +73,18 @@
         <form>
           <div class="form-row">
             <div class="col col-md-6">
-              <input type="text" class="form-control" placeholder="nombre de la especie" v-model="especieAgregar">
+              <input type="text" class="form-control" placeholder="nombre de la mascota" v-model="nombreA">
+              <br>
+              <input type="text" class="form-control" placeholder="Escriba la edad" v-model="edadA">
+              <br>
+              <input type="text" class="form-control" placeholder="Escriba el peso" v-model="pesoA"><br>
+
+              <select class="form-control" v-model="generoA"> 
+                <option disabled="">Elige una especie</option>
+                <option value="M">M</option>
+                <option value="H">H</option>
+              </select>
+
               
             </div>
           </div>
@@ -82,8 +93,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" @click="guardarEspecie" v-if="agregando==true">Guardar</button>
-        <button type="button" class="btn btn-warning" @click="actualizarEspecie()" v-if="agregando==false">Guardar cambios</button>
+        <button type="button" class="btn btn-primary" @click="guardarMascota">Guardar</button>
+        
       </div>
     </div>
   </div>

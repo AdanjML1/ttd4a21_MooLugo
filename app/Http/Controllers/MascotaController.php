@@ -37,9 +37,18 @@ class MascotaController extends Controller
     public function store(Request $request)
     {
         //
+        $mascota=new Mascota();
+
+        //$mascota->id_mascota=$request->get('id_mascota');
+        $mascota->nombre=$request->get('nombre');
+        $mascota->edad=$request->get('edad');
+        $mascota->peso=$request->get('peso');
+        $mascota->genero=$request->get('genero');
+
+        $mascota->save();
     }
 
-    /**
+    /** 
      * Display the specified resource.
      *
      * @param  int  $id

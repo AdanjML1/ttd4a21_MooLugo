@@ -10,9 +10,9 @@
       <div class="col-md-4">
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="escriba el codigo del producto"
-          aria-describedby="basic-addon2" v-model="sku">
+          aria-describedby="basic-addon2" v-model="sku" v-on:keyup.enter="buscarProducto()">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" @click="buscarProducto()">boton
+            <button class="btn btn-outline-secondary" type="button" @click="buscarProducto()"> Buscar
               
             </button>
             
@@ -42,11 +42,12 @@
                     </thead>
 
                     <tbody>
-                      <tr v-for="venta in ventas">
+                      <tr v-for="(venta,index) in ventas">
                         <td>@{{venta.sku}}</td>
                         <td>@{{venta.nombre}}</td>
                         <td>@{{venta.precio}}</td>
-                        <td>@{{venta.cantidad}}</td>
+
+                        <td><input type="number" v-model.number="cantidades[index] " min="1"></td>
                         <td>@{{venta.total}}</td>
 
                         
@@ -62,6 +63,7 @@
               
             </div>
     <!--<h1>@{{mensaje}}</h1>-->
+    @{{cantidades}}
   </div>
   
 </div>

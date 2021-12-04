@@ -18,6 +18,8 @@ new Vue({
 		mensaje:'Este es el api Ventas',
 		sku:'',
 		ventas:[],
+		cantidades:[],
+		cant:1,
 
 	},
 	created:function(){
@@ -42,6 +44,7 @@ new Vue({
 
 				
 				this.ventas.push(producto);
+				this.cantidades.push(1);
 				this.sku='';
 
 
