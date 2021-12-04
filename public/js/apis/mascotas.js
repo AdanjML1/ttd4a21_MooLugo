@@ -5,6 +5,10 @@ var apiMascota='http://localhost/ttd4a21_MooLugo/public/apiMas';
 
 var apiEspecie='http://localhost/ttd4a21_MooLugo/public/apiEs';
 
+var apiPropietario='http://localhost/ttd4a21_MooLugo/public/apiPro';
+
+var apiRaza='http://localhost/ttd4a21_MooLugo/public/apiRaza';
+
 new Vue({
 	http: {
             headers: {
@@ -32,11 +36,17 @@ new Vue({
 		mensaje:'Este es el api Mascota',
 		mascotas:[],
 		especies:[],
+		propietarios:[],
+		razas:[],
 
 	},
+	//al crearse la pagina carga los metodos
 	created:function(){
 		this.getMascota();
 		this.obtenerEspecies();
+		this.obtenerPropietarios();
+		this.obtenerRazas();
+
 
 	},
 	methods:{
@@ -50,6 +60,20 @@ new Vue({
 			this.$http.get(apiEspecie).then(function(j){
 
 				this.especies=j.data;
+			
+			})
+	    },
+	    obtenerPropietarios:function(){
+			this.$http.get(apiPropietario).then(function(j){
+
+				this.propietarios=j.data;
+			
+			})
+	    },
+	    obtenerRazas:function(){
+			this.$http.get(apiRaza).then(function(j){
+
+				this.razas=j.data;
 			
 			})
 	    },

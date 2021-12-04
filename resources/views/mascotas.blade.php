@@ -87,21 +87,18 @@
               </select>
               <br>
               <select class="form-control" v-model="id_propietarioA"> 
-                <option disabled="">Elige un propietario</option>
-                <option value="1">adan</option>
-                <option value="2">richi</option>
+                <!--es muy importante recordar que elselect dinamico hace referencia 
+                  a especies= al array en el archivo js , y especie= al dato que trae el json-->
+                <option v-for="propietario in propietarios" v-bind:value="propietario.id_propietario">@{{propietario.nombre}}</option>
               </select>
               <br>
               <select class="form-control" v-model="id_especieA"> 
-                <option disabled="">Elige una especie</option>
-                <option value="1">Canino</option>
-                <option value="2">Felino</option>
+                <option v-for="especie in especies" v-bind:value="especie.id_especie">@{{especie.especie}}</option>
+              
               </select>
               <br>
               <select class="form-control" v-model="id_razaA"> 
-                <option disabled="">Elige una raza</option>
-                <option value="1">Chowchow</option>
-                <option value="2">huski</option>
+                <option v-for="raza in razas" v-bind:value="raza.id_raza">@{{raza.raza}}</option>
               </select>
               <br>
 
